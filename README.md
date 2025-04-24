@@ -328,7 +328,7 @@ default via *адрес шлюза*
 
 <br/>
 
-#### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-ecorouter)
+#### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)
 >**'options' - HQ-RTR/BR-RTR**
 <details>
  
@@ -367,6 +367,90 @@ net.ipv4.ip_forward = 1
 ```yml
 sysctl -p /etc/sysctl.conf
 ```
+
+</details>
+
+<br/>
+
+## Задание 3
+
+### Создание локальных учетных записей
+
+- Создайте пользователя sshuser на серверах HQ-SRV и BR-SRV
+
+  - Пароль пользователя sshuser с паролем P@ssw0rd
+
+  - Идентификатор пользователя 1010
+
+  - Пользователь sshuser должен иметь возможность запускать sudo без дополнительной аутентификации.
+
+- Создайте пользователя net_admin на маршрутизаторах HQ-RTR и BR-RTR
+
+  - Пароль пользователя net_admin с паролем P@$$word
+
+  - При настройке на EcoRouter пользователь net_admin должен обладать максимальными привилегиями
+
+  - При настройке ОС на базе Linux, запускать sudo без дополнительной аутентификации
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+#### Создание пользователя `sshuser` на серверах
+(чтобы всё получилось нужно пользователю root дать доступ к sudo "nano cd /etc/sudoers" nano - по желанию)
+Создаем самого пользователя:
+```yml
+useradd sshuser -u 1010
+```
+> опция **`-u`** позволяет указать идентификатор пользователя сразу при создании
+
+<br/>
+
+Задаем пароль:
+```yml
+passwd sshuser
+```
+
+<br/>
+
+Добавляем в группу **wheel**:
+```yml
+usermod -aG wheel sshuser
+```
+
+<br/>
+
+Добавляем строку в **`/etc/sudoers`**:
+```yml
+sshuser ALL=(ALL) NOPASSWD:ALL
+```
+> Позволяет запускать **sudo** без аутентификации 
+
+<br/>
+
+#### Создание пользователя `net_admin` на Ecorouter
+
+Создаем самого пользователя:
+```yml
+username net_admin
+```
+
+<br/>
+
+Задаем пароль:
+```yml
+password P@ssw0rd
+```
+
+<br/>
+
+Присваиваем привилегии администратора:
+```yml
+role admin
+```
+
 
 </details>
 
