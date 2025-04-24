@@ -469,7 +469,8 @@ sshuser ALL=(ALL) NOPASSWD:ALL
 
 <br/>
 
-<details> 
+<details>
+<summary>Решение</summary>
 #### Настройка VLAN для серверов и клиентов
 
 
