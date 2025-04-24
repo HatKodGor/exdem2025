@@ -400,6 +400,10 @@ sysctl -p /etc/sysctl.conf
 
 #### Создание пользователя `sshuser` на серверах
 (чтобы всё получилось нужно пользователю root дать доступ к sudo "nano cd /etc/sudoers" nano - по желанию)
+<p align="center">
+  <img  src="https://github.com/HatKodGor/exdem2025/blob/main/3.png">
+<p\>
+
 Создаем самого пользователя:
 ```yml
 useradd sshuser -u 1010
