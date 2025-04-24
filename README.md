@@ -187,7 +187,17 @@ NM_CONTROLLED=no
 DISABLED=no
 CONFIG_IPV4=yes
 ```
-> **`nmcli`** (для того чтобы установить nmcli)
+> **`options`**
+
+```yml
+192.168.*.*/*
+```
+> **'ipv4address'**
+
+```yml
+default via 192.168.*.*/*
+```
+> **'ipv4route'**
 
 
 <br/>
@@ -198,22 +208,21 @@ CONFIG_IPV4=yes
 
 - Создаем логический интерфейс:
 ```yml
-interface int0
-  description "to isp"
+interface toISP
   ip address 172.16.4.2/28
 ```
 
 - Настраиваем физический порт:
 ```yml
 port ge0
-  service-instance ge0/int0
+  service-instance ge0/toISP
     encapsulation untagged
 ```
 
 - Объединеняем порт с интерфейсом:
 ```yml
-interface int0
-  connect port ge0 service-instance ge0/int0
+interface toISP
+  connect port ge0 service-instance ge0/toISP
 ```
 
 <br/>
@@ -222,46 +231,47 @@ interface int0
 
 - Создаем два интерфейса:
 ```yml
-interface int1
+interface vl.100
   description "to hq-srv"
-  ip address 192.168.100.1/26
+  ip address 192.168.0.62/26
 !
-interface int2
+interface vl.200
   description "to hq-cli"
-  ip address 192.168.200.1/28
+  ip address 192.168.1.78/28
 ```
 
 - Настраиваем порт:
 ```yml
 port ge1
-  service-instance ge1/int1
+  service-instance vl.100
     encapsulation dot1q 100
     rewrite pop 1
-  service-instance ge1/int2
+  service-instance vl.200
     encapsulation dot1q 200
     rewrite pop 1
 ```
 
 - Объединяем порт с интерфейсами:
 ```yml
-interface int1
-  connect port ge1 service-instance ge1/int1
+interface vl.100
+  connect port ge1 service-instance vl.100
 !
-interface int2
-  connect port ge1 service-instance ge1/int2
+interface vl.200
+  connect port ge1 service-instance vl.200
 ```
 
 <br/>
 
-#### Адресация на BR-RTR (без разделения на VLAN) настраивается аналогично примеру выше
+#### Адресация на BR-RTR (без разделения на VLAN) настраивается аналогично примеру выше в сторону ISP
 
 <br/>
 
-#### Добавление маршрута по умолчанию в EcoRouter
+#### Добавление маршрута по умолчанию в EcoRouter (HQ-RTR; BR-RTR)
 
 Прописываем следующее:
 ```yml
-ip route 0.0.0.0 0.0.0.0 *адрес шлюза*
+ip route 0.0.0.0/0 172.16.4.14 - HQ-RTR
+ip route 0.0.0.0/0 172.16.5.14 - BR-RTR
 ```
 
 </details>
