@@ -6,10 +6,12 @@
 
 <details>
 <summary>Установка/предустановка необходимых пакетов</summary>
+
+ Нужно поставить галочку в "Система управления NetworkManager" в категории "Система управления сетевыми интерфейсами" для работы с утилитой "nmcli"
  <p align="center">
   <img width="1080" height="720" src="https://github.com/HatKodGor/exdem2025/blob/main/2.png"
 <p\>
-<p align="center"><strong>Топология</strong></p>
+<p align="center"><strong>NM</strong></p>
 
 <br/>
 
