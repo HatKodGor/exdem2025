@@ -31,7 +31,7 @@
 
 2. **[Настройка ISP](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)**
   
-3. **[Создание локальных учетных записей]**
+3. **[Создание локальных учетных записей](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)**
   
 4. **[Настройте на интерфейсе HQ-RTR в сторону офиса HQ виртуальный коммутатор]**
    
@@ -404,9 +404,9 @@ sysctl -p /etc/sysctl.conf
   <img  src="https://github.com/HatKodGor/exdem2025/blob/main/3.png">
 <p\>
 
-Создаем самого пользователя:
+Создаем самого пользователя(мы находимся под пользователем root):
 ```yml
-useradd sshuser -u 1010
+sudo useradd sshuser -u 1010
 ```
 > опция **`-u`** позволяет указать идентификатор пользователя сразу при создании
 
@@ -414,14 +414,14 @@ useradd sshuser -u 1010
 
 Задаем пароль:
 ```yml
-passwd sshuser
+sudo passwd sshuser
 ```
 
 <br/>
 
 Добавляем в группу **wheel**:
 ```yml
-usermod -aG wheel sshuser
+sudo usermod -aG wheel sshuser
 ```
 
 <br/>
