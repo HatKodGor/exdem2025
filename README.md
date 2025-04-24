@@ -160,17 +160,8 @@ NM_CONTROLLED=no
 DISABLED=no
 CONFIG_IPV4=yes
 ```
-> **`options`**
+> **`nmcli`** (для того чтобы установить nmcli)
 
-```yml
-192.168.100.62/26
-```
-> **`ipv4address`**
-
-```yml
-default via 192.168.100.1
-```
-> **`ipv4route`**
 
 <br/>
 
