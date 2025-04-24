@@ -116,18 +116,18 @@ hostname <name>
   </tr>
   <tr>
     <td align="center">SRV-Net (VLAN 100)</td>
-    <td align="center">192.168.100.0/26</td>
-    <td align="center">192.168.100.1 - 192.168.100.62</td>
+    <td align="center">192.168.0.0/26</td>
+    <td align="center">192.168.0.1 - 192.168.0.62</td>
   </tr>
   <tr>
     <td align="center">CLI-Net (VLAN 200)</td>
-    <td align="center">192.168.200.0/28</td>
-    <td align="center">192.168.200.1 - 192.168.200.14</td>
+    <td align="center">192.168.1.0/28</td>
+    <td align="center">192.168.1.65 - 192.168.1.78</td>
   </tr>
   <tr>
     <td align="center">BR-Net</td>
-    <td align="center">192.168.0.0/27</td>
-    <td align="center">192.168.0.1 - 192.168.0.30</td>
+    <td align="center">192.168.2.0/27</td>
+    <td align="center">192.168.2.1 - 192.168.2.30</td>
   </tr>
   <tr>
     <td align="center">MGMT (VLAN 999)</td>
