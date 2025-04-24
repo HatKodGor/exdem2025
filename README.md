@@ -122,88 +122,27 @@ hostname <name>
 
 <br/>
 
-<table align="center">
-  <tr>
-    <td align="center">Имя устройства</td>
-    <td align="center">Интерфейс</td>
-    <td align="center">IPv4/IPv6</td>
-    <td align="center" >Маска/Префикс</td>
-    <td align="center">Шлюз</td>
-  </tr>
-  <tr>
-    <td align="center" rowspan="3">ISP</td>
-    <td align="center">ens33</td>
-    <td align="center">10.12.28.5 (DHCP)</td>
-    <td align="center">/24</td>
-    <td align="center">10.12.28.254</td>
-  </tr>
-  <tr>
-    <td align="center">ens34</td>
-    <td align="center">172.16.5.1</td>
-    <td align="center">/28</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td align="center">ens35</td>
-    <td align="center">172.16.4.1</td>
-    <td align="center">/28</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td align="center" rowspan="3">HQ-RTR</td>
-    <td align="center">int0</td>
-    <td align="center">172.16.4.2</td>
-    <td align="center">/28</td>
-    <td align="center">172.16.4.1</td>
-  </tr>
-  <tr>
-    <td align="center">int1</td>
-    <td align="center">192.168.100.1</td>
-    <td align="center">/26</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td align="center">int2</td>
-    <td align="center">192.168.200.1</td>
-    <td align="center">/28</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td align="center" rowspan="2">BR-RTR</td>
-    <td align="center">int0</td>
-    <td align="center">172.16.5.2</td>
-    <td align="center">/28</td>
-    <td align="center">172.16.5.1</td>
-  </tr>
-  <tr>
-    <td align="center">int1</td>
-    <td align="center">192.168.0.1</td>
-    <td align="center">/27</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
-    <td align="center">HQ-SRV</td>
-    <td align="center">ens33</td>
-    <td align="center">192.168.100.62</td>
-    <td align="center">/26</td>
-    <td align="center">192.168.100.1</td>
-  </tr>
-  <tr>
-    <td align="center">BR-SRV</td>
-    <td align="center">ens33</td>
-    <td align="center">192.168.0.30</td>
-    <td align="center">/27</td>
-    <td align="center">192.168.0.1</td>
-  </tr>
-  <tr>
-    <td align="center">HQ-CLI</td>
-    <td align="center">ens33</td>
-    <td align="center">192.168.200.14</td>
-    <td align="center">/28</td>
-    <td align="center">192.168.200.1</td>
-  </tr>
-</table>
-<p align="center"><strong>Таблица адресации</strong></p>
+- **Пример таблицы адресации:**
+
+  | Имя Устройства | IPv4                    | Интерфейс | NIC     | Шлюз        |
+  |----------------|-------------------------|-----------|---------|-------------|
+  | ISP            | NAT (inet)              | ens3      | Internet|             |
+  |                | 172.16.4.14/28          | ens4      | ISP_HQ  |             |
+  |                | 172.16.5.14/28          | ens5      | ISP_BR  |             |
+  | HQ-RTR         | 172.16.4.1/28           | te0       | ISP_HQ  | 172.16.4.14 |
+  |                | 192.168.0.81/29         | vl999     |         |             |
+  |                | 192.168.0.62/26         | te1.100   |         |             |
+  |                | 192.168.1.78/28         | te1.999   | HQ_NET  |             |
+  |                | 172.16.0.1/30           | GRE       | TUN     |             |
+  | HQ-SW          | 192.168.0.82/29         | ens3      | HQ_NET  | 192.168.0.81| 
+  |                | -                       | ens4      | SRV_NET |             |
+  |                | -                       | ens5      | CLI_NET |             |
+  | HQ-SRV         | 192.168.0.2/26          | ens3      | SRV_NET | 192.168.0.62|
+  | HQ-CLI         | 192.168.1.65/28 (DHCP)  | ens3      | CLI_NET | 192.168.1.78|
+  | BR-RTR         | 172.16.5.1/28           | te0       | ISP_BR  | 172.16.5.14 |
+  |                | 192.168.2.1/27          | te1       | BR_NET  |             |
+  |                | 172.16.0.2/30           | GRE       | TUN     |             |
+  | BR-SRV         | 192.168.2.2/27          | ens3      | BR_NET  | 192.168.2.1 |
 
 > Адресация для **ISP** взята из следующего задания
 
