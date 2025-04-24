@@ -7,7 +7,7 @@
 <details>
 <summary>Установка/предустановка необходимых пакетов</summary>
  <p align="center">
-  <img width="450" height="600" src="https://github.com/user-attachments/assets/bba10bdc-d2ca-4571-92ff-d8d2fb2f47b"
+  <img width="450" height="600" src="[https://github.com/HatKodGor/exdem2025/blob/main/2.png}"
 <p\>
 <p align="center"><strong>Топология</strong></p>
 
