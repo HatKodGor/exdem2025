@@ -399,7 +399,7 @@ sysctl -p /etc/sysctl.conf
 <br/>
 
 #### Создание пользователя `sshuser` на серверах
-(чтобы всё получилось нужно пользователю root дать доступ к sudo "nano cd /etc/sudoers" nano - по желанию)
+(чтобы всё получилось нужно пользователю root дать доступ к sudo "nano cd /etc/sudoers" nano - по желанию) нужно расскомментировать текст, то где белый текст в левой стороне изначально стоит "#" его нужно убрать
 <p align="center">
   <img  src="https://github.com/HatKodGor/exdem2025/blob/main/3.png">
 <p\>
