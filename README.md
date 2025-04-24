@@ -6,6 +6,7 @@
 
 <details>
 <summary>Установка/предустановка необходимых пакетов</summary>
+</details>
 
 <br/>
 
