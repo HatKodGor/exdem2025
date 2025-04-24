@@ -29,7 +29,7 @@
 
 1. **[Произведите базовую настройку устройств](https://github.com/HatKodGor/exdem2025/blob/main/README.md#%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%B5%D0%B4%D0%B8%D1%82%D0%B5-%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%83%D1%8E-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D1%83-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2)**
 
-2. **[Настройка ISP]**
+2. **[Настройка ISP](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)**
   
 3. **[Создание локальных учетных записей]**
   
@@ -328,7 +328,7 @@ default via *адрес шлюза*
 
 <br/>
 
-#### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)
+#### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/HatKodGor/exdem2025?tab=readme-ov-file#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-ecorouter)
 >**'options' - HQ-RTR/BR-RTR**
 <details>
  
