@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/4071e4c6-4293-4fc6-904a-71da9b1be550)# *exdem2025*
+*exdem2025*
 ###
 # МОДУЛЬ_1
 
@@ -6,7 +6,13 @@
 
 <details>
 <summary>Установка/предустановка необходимых пакетов</summary>
- ![image](https://github.com/user-attachments/assets/bba10bdc-d2ca-4571-92ff-d8d2fb2f47bc)
+ <p align="center">
+  <img width="450" height="600" src="https://github.com/user-attachments/assets/bba10bdc-d2ca-4571-92ff-d8d2fb2f47b"
+<p\>
+<p align="center"><strong>Топология</strong></p>
+
+<br/>
+
 
 </details>
 
