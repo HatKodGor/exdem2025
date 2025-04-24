@@ -485,6 +485,10 @@ sshuser ALL=(ALL) NOPASSWD:ALL
     rewrite pop 1
     connect ip interface vl.100
     ```
+    - **На HQ-SRV:**
+    ```yuml
+    nmcli con add type vlan con-name ens34.100 ifname ens34.100 dev ens34 id 100 ip4 192.168.0.2/26 gw4 192.168.0.62
+    ```
     
 - **VLAN 200 для HQ-CLI:**
   - **На HQ-RTR:**
@@ -498,6 +502,10 @@ sshuser ALL=(ALL) NOPASSWD:ALL
     connect ip interface vl.200
     ex
     wr mem
+    ```
+    **На HQ-CLI:**
+    ``` yuml
+    nmcli con add type vlan con-name ens34.200 ifname ens34.200 dev ens34 id 200 ip4 192.168.1.65/28 gw4 192.168.1.78
     ```
 
     
