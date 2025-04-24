@@ -329,9 +329,28 @@ default via *адрес шлюза*
 <br/>
 
 #### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)
+>**'options' - HQ-RTR/BR-RTR**
+<details>
+ 
+ ```yml
+ BOOTPROTO=static
+ TYPE=eth
+ NM_CONTROLLED=no
+ DISABLED=no
+ CONFIG_IPV4=yes
+ ```
+</details>
 
 <br/>
 
+>**'ipv4address'**
+<details>
+
+ ```yml
+172.16.4.14/28 - HQ-RTR
+172.16.5.14/28 - BR-RTR
+```
+</details>
 #### Включение маршрутизации
 
 В файле **`/etc/net/sysctl.conf`** изменяем строку:
