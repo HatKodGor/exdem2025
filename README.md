@@ -438,21 +438,21 @@ sshuser ALL=(ALL) NOPASSWD:ALL
 
 Создаем самого пользователя:
 ```yml
-username net_admin
+(config)username net_admin
 ```
 
 <br/>
 
 Задаем пароль:
 ```yml
-password P@ssw0rd
+(config-user)password P@ssw0rd
 ```
 
 <br/>
 
 Присваиваем привилегии администратора:
 ```yml
-role admin
+(config-user)role admin
 ```
 
 
