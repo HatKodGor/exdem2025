@@ -35,7 +35,7 @@
   
 4. **[Настройте на интерфейсе HQ-RTR в сторону офиса HQ виртуальный коммутатор](https://github.com/HatKodGor/exdem2025/blob/main/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-4)**
    
-5. **[Настройка безопасного удаленного доступа на серверах HQ-SRV и BR-SRV]**
+5. **[Настройка безопасного удаленного доступа на серверах HQ-SRV и BR-SRV](https://github.com/HatKodGor/exdem2025/blob/main/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-5)**
   
 6. **[Между офисами HQ и BR необходимо сконфигурировать IP-туннель]**
 
