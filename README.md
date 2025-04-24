@@ -560,3 +560,98 @@ systemctl restart sshd
 </details>
 
 <br/>
+
+## Задание 6
+
+### Между офисами HQ и BR необходимо сконфигурировать IP-туннель
+
+- Сведения о туннеле занесите в отчёт
+
+- На выбор технологии GRE или IP in IP
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+#### Создание туннеля на HQ-RTR
+
+Создаем интерфейс **GRE**-туннеля на **HQ-RTR**:
+```yml
+int tunnel.0
+```
+
+<br/>
+
+Назначаем **IP-адрес**:
+```yml
+ip add 172.16.0.1/30
+```
+
+<br/>
+
+Выставляем параметр **MTU**:
+```yml
+ip mtu 1400
+```
+> В связи с добавлением служебного заголовка появляются новые требования к допустимому значению MTU при передаче пакета. Заголовок GRE имеет размерность 4 байта, 20 байт транспортный IP заголовок, заголовок IP пакета 20 байт, таким образом возникает необходимость задавать размер допустимого MTU на интерфейсах туннеля меньше стандартного значения.
+
+<br/>
+
+Задаем режим работы туннеля **GRE** и адреса **начала** и **конца** туннеля:
+```yml
+ip tunnel 172.16.4.2 172.16.5.2 mode gre
+```
+
+<br/>
+
+#### GRE-туннель на BR-RTR настраивается аналогично примеру выше
+
+</details>
+
+<br/>
+
+### 6. Настройка IP-туннеля между офисами
+Не забудьте чекнуть прописаны ли статические маршруты ip route на роутерах
+
+- **На HQ-RTR:**
+  ```yuml
+  Interface tunnel.1
+  Ip add 172.16.0.1/30
+  Ip mtu 1400  
+  ip ospf network broadcast  
+  ip ospf mtu-ignore  
+  Ip tunnel 172.16.4.1 172.16.5.1 mode gre  
+  end  
+  wr mem  
+  Conf t
+  Router ospf 1
+  Ospf router-id  172.16.0.1
+  network 172.16.0.0 0.0.0.3 area 0
+  network 192.168.0.0 0.0.0.63 area 0
+  network 192.168.1.78 0.0.0.15 area 0
+  passive-interface default
+  no passive-interface tunnel.1
+  ```
+- **На BR-RTR:**
+  ```yuml
+  Interface tunnel.1
+  Ip add 172.16.0.2/30
+  Ip mtu 1400
+  ip ospf mtu-ignore
+  ip ospf network broadcast
+  Ip tunnel 172.16.5.1 172.16.4.1 mode gre
+  end
+  Conf t
+  Router ospf 1
+  Ospf router-id 172.16.0.2
+  Network 172.16.0.0 0.0.0.3 area 0
+  Network 192.168.2.0 0.0.0.31 area 0
+  Passive-interface default
+  no passive-interface tunnel.1
+  end
+  wr mem
+  ```
+
+
