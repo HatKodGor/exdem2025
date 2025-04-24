@@ -531,7 +531,7 @@ sshuser ALL=(ALL) NOPASSWD:ALL
 <summary>Решение</summary>
 <br/>
 
-Приводим указанные строки в файле **`/etc/openssh/sshd_config`** к следующим значениям:
+Приводим указанные строки в файле **`/etc/openssh/sshd_config`** к следующим значениям (всё должно быть незакомментировано):
 ```yml
 Port 2024
 MaxAuthTries 2
