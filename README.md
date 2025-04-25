@@ -698,7 +698,7 @@ systemctl restart sshd
   ip add 192.168.0.81/29
   port ge1
   service-instance toSW
-  encapsulation untaagged
+  encapsulation untagged
   connect port te1 service-instance toSW
   end
   wr mem
