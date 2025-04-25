@@ -753,6 +753,7 @@ systemctl restart sshd
 
 <details>
  <summary>Решение</summary>
+ 
 - **Для офиса HQ (на HQ-RTR):**
   ```yuml
   en
