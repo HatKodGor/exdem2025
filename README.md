@@ -620,3 +620,113 @@ systemctl restart sshd
 </details>
 
 <br/>
+
+
+### 7. Динамическая маршрутизация
+
+- **Цель:** Обеспечить доступ ресурсов одного офиса к другому посредством протокола link-state (например, OSPF).
+
+- **Настройка аутентификации OSPF на EcoRouter:**
+
+  **На HQ-RTR:**
+  ```bash
+  router ospf 1
+    area 0 authentication
+  interface tunnel.1
+    ip ospf authentication-key ecorouter
+  wr mem
+  ```
+
+  **На BR-RTR:**
+  ```bash
+  router ospf 1
+    area 0 authentication ex
+  interface tunnel.1
+    ip ospf authentication-key ecorouter
+  wr mem
+  ```
+
+> **Отчёт:** Занесите сведения о настройке и защите протокола в отчёт.
+
+---
+
+### 8. Динамическая трансляция адресов (NAT) 
+<details>
+<summary>Решение</summary>
+- **На HQ-RTR:**
+  ```bash
+  conf t
+  ip nat pool nat1 192.168.0.1-192.168.0.254
+  ip nat source dynamic inside-to-outside pool nat1 overload interface ISP
+  ip nat pool nat2 192.168.1.65-192.168.1.79
+  ip nat source dynamic inside-to-outside pool nat2 overload interface ISP
+
+  - **На BR-RTR:**
+  ```bash
+  conf t
+  ip nat pool nat3 192.168.2.2-192.168.2.31
+  ip nat source dynamic inside-to-outside pool nat3 overload interface ISP
+
+#### Создание подсети управления (VLAN 999)
+
+- **На HQ-RTR:**
+  ```bash
+  int vl999
+  ip add 192.168.0.81/29
+  description toSW
+  port te1
+  service-instance toSW
+  encapsulation untaagged
+  connect port te1 service-instance toSW
+  end
+  wr mem
+  ```
+  - **На HQ-RTR:**
+  ```bash
+  conf t
+  int ISP
+  ip nat outside
+  ex
+  int vl999
+  ip nat inside
+  ```
+  - **На BR-RTR:**
+  ```bash
+  conf t
+  int ISP
+  ip nat outside
+  ex
+  int SRV
+  ip nat inside
+  ```
+  
+
+- **Настройка шлюзов на серверах:**
+  - **HQ-SRV:** Шлюз – `192.168.0.1/26`
+  - **BR-SRV:** Шлюз – `192.168.1.1/27`
+
+---
+</details>
+
+### 9. Настройка DHCP-сервера
+
+- **Для офиса HQ (на HQ-RTR):**
+  ```yuml
+  en
+  conf t
+  ip pool dhcpHQ 192.168.1.65-192.168.1.79
+  dhcp-server 1
+  pool dhcpHQ 1
+  domain-name au-team.irpo
+  mask 255.255.255.240  
+  dns 192.168.0.2    
+  gateway 192.168.1.78    
+  end  
+  wr mem
+  ```
+- **Клиентом является HQ-CLI (на hq-rtr) :**  
+  ```yuml
+  conf t
+  interface vl.200
+  dhcp-server 1
+  ```
