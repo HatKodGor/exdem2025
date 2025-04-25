@@ -674,6 +674,7 @@ systemctl restart sshd
 
 <details>
 <summary>Решение</summary>
+ 
 - **На HQ-RTR:**
   ```yuml
   conf t
@@ -682,7 +683,7 @@ systemctl restart sshd
   ip nat pool nat2 192.168.1.65-192.168.1.79
   ip nat source dynamic inside-to-outside pool nat2 overload interface ISP
 
-  - **На BR-RTR:**
+ - **На BR-RTR:**
   ```yuml
   conf t
   ip nat pool nat3 192.168.2.2-192.168.2.31
