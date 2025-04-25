@@ -653,6 +653,8 @@ systemctl restart sshd
 ---
 </details>
 
+<br/>
+
 ### 8. Динамическая трансляция адресов (NAT) 
 <details>
 <summary>Решение</summary>
@@ -711,8 +713,11 @@ systemctl restart sshd
 ---
 </details>
 
-### 9. Настройка DHCP-сервера
+<br/>
 
+### 9. Настройка DHCP-сервера
+<details>
+ <summary>Решение</summary>
 - **Для офиса HQ (на HQ-RTR):**
   ```yuml
   en
@@ -733,3 +738,5 @@ systemctl restart sshd
   interface vl.200
   dhcp-server 1
   ```
+  </details>
+<br/>
