@@ -624,12 +624,14 @@ systemctl restart sshd
 
 ### 7. Динамическая маршрутизация
 
+<details>
+<summary>Решение</summary>
 - **Цель:** Обеспечить доступ ресурсов одного офиса к другому посредством протокола link-state (например, OSPF).
 
 - **Настройка аутентификации OSPF на EcoRouter:**
 
   **На HQ-RTR:**
-  ```bash
+  ```yuml
   router ospf 1
     area 0 authentication
   interface tunnel.1
@@ -638,7 +640,7 @@ systemctl restart sshd
   ```
 
   **На BR-RTR:**
-  ```bash
+  ```yuml
   router ospf 1
     area 0 authentication ex
   interface tunnel.1
@@ -649,12 +651,13 @@ systemctl restart sshd
 > **Отчёт:** Занесите сведения о настройке и защите протокола в отчёт.
 
 ---
+</details>
 
 ### 8. Динамическая трансляция адресов (NAT) 
 <details>
 <summary>Решение</summary>
 - **На HQ-RTR:**
-  ```bash
+  ```yuml
   conf t
   ip nat pool nat1 192.168.0.1-192.168.0.254
   ip nat source dynamic inside-to-outside pool nat1 overload interface ISP
@@ -662,7 +665,7 @@ systemctl restart sshd
   ip nat source dynamic inside-to-outside pool nat2 overload interface ISP
 
   - **На BR-RTR:**
-  ```bash
+  ```yuml
   conf t
   ip nat pool nat3 192.168.2.2-192.168.2.31
   ip nat source dynamic inside-to-outside pool nat3 overload interface ISP
@@ -670,7 +673,7 @@ systemctl restart sshd
 #### Создание подсети управления (VLAN 999)
 
 - **На HQ-RTR:**
-  ```bash
+  ```yuml
   int vl999
   ip add 192.168.0.81/29
   description toSW
@@ -682,7 +685,7 @@ systemctl restart sshd
   wr mem
   ```
   - **На HQ-RTR:**
-  ```bash
+  ```yuml
   conf t
   int ISP
   ip nat outside
@@ -691,7 +694,7 @@ systemctl restart sshd
   ip nat inside
   ```
   - **На BR-RTR:**
-  ```bash
+  ```yuml
   conf t
   int ISP
   ip nat outside
