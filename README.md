@@ -845,6 +845,7 @@ nano /etc/bind/zone/168.192.zone
  <summary>Решение</summary> 
 
 ```yuml
-  timedatectl set-timezone Europe/Moscow
+  timedatectl set-timezone Europe/Moscow - alt linux
+  ntp timezone +5 utc  - Ecorouter
   ```
 </details>
