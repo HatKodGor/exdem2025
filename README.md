@@ -775,3 +775,69 @@ systemctl restart sshd
   ```
   </details>
 <br/>
+
+## Задание 10
+
+### Настройка DNS-сервера
+
+<details>
+ <summary>Решение</summary>
+ 
+- **Установка и базовая настройка:**
+  ```yuml
+  apt-get install -y bind 
+  chattr -f +i /etc/resolv.conf
+  nano /etc/bind/options.conf
+  ```
+
+  ![bind1.png](https://github.com/HatKodGor/exdem2025/blob/main/4.png)
+  ![bind2.png](https://github.com/HatKodGor/exdem2025/blob/main/5.png)
+
+  ```yuml
+  nano local.conf
+  ```
+  ![bind3.png](https://github.com/HatKodGor/exdem2025/blob/main/6.png)
+
+  ```yuml
+  nano /etc/bind/zone/au-team.irpo.db
+  ```
+  ![name1.png](https://github.com/HatKodGor/exdem2025/blob/main/7.png)
+  
+```yuml
+nano /etc/bind/zone/168.192.zone
+```
+![name2.png](https://github.com/HatKodGor/exdem2025/blob/main/8.png)
+
+```yuml
+  chown -R root /etc/bind/zone
+  chmod 750 /etc/bind/*
+  chmod 750 /etc/bind/zone/*
+  systemctl restart bind
+```
+Если выдаёт что нужно смотреть bind.service, то ставьте вместо 750 значение 777
+
+Проверить зоны можно командой (название домена)-checkzone -z
+
+Для полной работоспособности на HQ-CLI нужно установить в качестве dns севрера HQ-SRV:
+
+```bash
+  nano /etc/resolv.conf
+  ```
+![name2.png](https://github.com/HatKodGor/exdem2025/blob/main/9.png)
+
+</details>
+
+<br/>
+
+## Задание 11
+
+### Настройте часовой пояс на всех устройствах, согласно месту проведения экзамена.
+
+<details>
+
+ <summary>Решение</summary> 
+
+```yuml
+  timedatectl set-timezone Europe/Moscow
+  ```
+</details>
