@@ -688,6 +688,7 @@ systemctl restart sshd
   conf t
   ip nat pool nat3 192.168.2.2-192.168.2.31
   ip nat source dynamic inside-to-outside pool nat3 overload interface ISP
+  ```
 
 #### Создание подсети управления (VLAN 999)
 
@@ -695,8 +696,7 @@ systemctl restart sshd
   ```yuml
   int vl999
   ip add 192.168.0.81/29
-  description toSW
-  port te1
+  port ge1
   service-instance toSW
   encapsulation untaagged
   connect port te1 service-instance toSW
