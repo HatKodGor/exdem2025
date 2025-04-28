@@ -179,7 +179,10 @@ hostname <name>
 
 #### Наcтройка IP-адресации на **HQ-SRV**, **BR-SRV**, **HQ-CLI** (настройка IP-адресации на **ISP** проводится в [следующем задании](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2))
 
-Приводим файлы **`options`**, **`ipv4address`**, **`ipv4route`** в директории **`/etc/net/ifaces/*имя интерфейса*/`** к следующему виду (в примере **HQ-SRV**):
+(в основном ip-адреса для HQ-SRV/CLI и BR-SRV настраиваются на самом vlan)
+
+Приводим файлы **`options`**, **`ipv4address`**, **`ipv4route`** в директории **`/etc/net/ifaces/*имя интерфейса*/`** к следующему виду (более опционально для ISP)
+
 ```yml
 BOOTPROTO=static
 TYPE=eth
@@ -190,12 +193,12 @@ CONFIG_IPV4=yes
 > **`options`**
 
 ```yml
-192.168.*.*/*
+192.168.*.*/* (пример)
 ```
 > **'ipv4address'**
 
 ```yml
-default via 192.168.*.*/*
+default via 192.168.*.*/* (пример)
 ```
 > **'ipv4route'**
 
