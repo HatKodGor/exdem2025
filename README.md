@@ -913,7 +913,7 @@ nano /etc/bind/zone/168.192.zone
   выставляем 192.168.0.2 в качестве нашего днс сервера на линке в nmtui
   нужно установить пакет samba и samba-dc ("apt-get install samba samba-dc")
   Нужно также чекать что на hq-srv, что на br-srv файл /etc/resolv.conf (бывает слетает настройка, хз как лечится)
-
+  ![настройка dns](https://github.com/HatKodGor/exdem2025/blob/main/11.png)
 
   ```
 
