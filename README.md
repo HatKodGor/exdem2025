@@ -903,7 +903,7 @@ nano /etc/bind/zone/168.192.zone
 <br/>
 
 <details>
-<summary>Не решено</summary>
+<summary>Решение</summary>
 <br/>
 
 ### 1. Доменный контроллер Samba
@@ -943,7 +943,7 @@ nano /etc/bind/zone/168.192.zone
   sudo rm -rf /var/lib/samba/private/dns_update_list  
   sudo rm -rf /var/lib/samba/private/dns  
   sudo rm -rf /var/lib/samba/private/dns.keytab  
-  Добавляем в файл /etc/smb.conf следующее  
+  Приводим файл /etc/smb.conf в следующий вид  
   ```
   ![named2.png](https://github.com/HatKodGor/exdem2025/blob/main/10.png)
 
