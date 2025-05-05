@@ -933,7 +933,7 @@ nano /etc/bind/zone/168.192.zone
   rm /etc/samba/smb.conf  
   samba-tool domain provision --use-rfc2307 --interactive
   ```
-  ![named1.png](https://github.com/dizzamer/DEMO2025/blob/main/samba-toolprovision.png)
+  ![named1.png](https://github.com/HatKodGor/exdem2025/blob/main/12.png)
 
 #### Удаление использования службы dns
   ```yuml
@@ -945,7 +945,7 @@ nano /etc/bind/zone/168.192.zone
   sudo rm -rf /var/lib/samba/private/dns.keytab  
   Добавляем в файл /etc/smb.conf следующее  
   ```
-  ![named2.png](https://github.com/dizzamer/DEMO2025/blob/main/smbconf.png)
+  ![named2.png](https://github.com/HatKodGor/exdem2025/blob/main/10.png)
 
   ```нгьд
   Запустите и добавьте в автозагрузку службы samba и named:  
