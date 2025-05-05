@@ -2,6 +2,9 @@
 ###
 # МОДУЛЬ_1
 
+<details>
+<summary> Полное решение </summary>
+
 <br/>
 
 <details>
@@ -852,3 +855,7 @@ nano /etc/bind/zone/168.192.zone
   ntp timezone +5 utc  - Ecorouter
   ```
 </details>
+
+</details>
+
+<br/>
