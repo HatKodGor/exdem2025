@@ -859,3 +859,106 @@ nano /etc/bind/zone/168.192.zone
 </details>
 
 <br/>
+
+###
+# МОДУЛЬ_2
+
+<details>
+ <summary> Полное решение_2 </summary>
+
+### Содержание
+
+1. **[Настройте доменный контроллер Samba на машине BR-SRV]**
+    
+2. **[Сконфигурируйте файловое хранилище]**
+
+3. **[Настройте службу сетевого времени на базе сервиса chrony]**
+
+4. **[Сконфигурируйте ansible на сервере BR-SRV]**
+
+5. **[Развертывание приложений в Docker на сервере BR-SRV]**
+
+6. **[На маршрутизаторах сконфигурируйте статическую трансляцию портов]**
+
+7. **[Запустите сервис moodle на сервере HQ-SRV]**
+<br/>
+
+<br/>
+
+
+## Задание 1
+
+### Настройте доменный контроллер Samba на машине BR-SRV
+
+- Создайте 5 пользователей для офиса HQ: имена пользователей фомата user№.hq. Создайте группу hq, введите в эту группу созданных пользователей
+
+- Введите в домен машину HQ-CLI
+
+- Пользователи группы hq имеют право аутентифицироваться на клиентском ПК
+
+- Пользователи группы hq должны иметь возможность повышать привилегии для выполнения ограниченного набора команд: cat, grep, id. Запускать другие команды с повышенными привилегиями пользователи не имеют права
+
+- Выполните импорт пользователей из файла users.csv. Файл будет располагаться н авиртуальной машине BR-SRV в папке /opt
+
+<br/>
+
+<details>
+<summary>Не решено</summary>
+<br/>
+
+### 1. Доменный контроллер Samba
+
+#### Подготовка сервера
+  ```yuml
+  выставляем 192.168.0.2 в качестве нашего днс сервера на линке в nmtui
+  нужно установить пакет samba и samba-dc ("apt-get install samba samba-dc")
+  Нужно также чекать что на hq-srv, что на br-srv файл /etc/resolv.conf (бывает слетает настройка, хз как лечится)
+
+
+  ```
+
+#### Создание домена через `Samba DC`
+
+- Удалите старый файл конфигурации:
+  ```yuml
+  Создание резервных копий файлов  
+  Переименуйте файл /etc/smb.conf, он будет создан позднее в процессе выполнения команды samba-tool.  
+  cp /etc/samba/smb.conf /etc/samba/smb.conf.back  
+  Создайте резервную копию используемого по умолчанию конфигурационного файла kerberos:  
+  cp /etc/krb5.conf /etc/krb5.conf.back  
+  ```
+## Конфигурирование сервера с помощью утилиты samba-tool
+  ```yuml
+  Файла /etc/samba/smb.conf быть не должно, он сам создаст.  
+  rm /etc/samba/smb.conf  
+  samba-tool domain provision --use-rfc2307 --interactive
+  ```
+  ![named1.png](https://github.com/dizzamer/DEMO2025/blob/main/samba-toolprovision.png)
+
+#### Удаление использования службы dns
+  ```yuml
+  systemctl stop samba  
+  Подчищаем, всё где могут храниться наши записи  
+  sudo rm -rf /var/lib/samba/private/dns_update_cache  
+  sudo rm -rf /var/lib/samba/private/dns_update_list  
+  sudo rm -rf /var/lib/samba/private/dns  
+  sudo rm -rf /var/lib/samba/private/dns.keytab  
+  Добавляем в файл /etc/smb.conf следующее  
+  ```
+  ![named2.png](https://github.com/dizzamer/DEMO2025/blob/main/smbconf.png)
+
+  ```нгьд
+  Запустите и добавьте в автозагрузку службы samba и named:  
+  systemctl enable samba --now  
+  systemctl status samba  
+  Проверка созданного домена с помощью команды samba-tool domain info au-team.irpo: 
+  ```
+
+  ![named2.png](https://github.com/dizzamer/DEMO2025/blob/main/samba-tool.png)
+
+
+</details>
+
+<br/>
+ 
+</details>
