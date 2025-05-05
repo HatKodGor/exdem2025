@@ -868,7 +868,7 @@ nano /etc/bind/zone/168.192.zone
 
 ### Содержание
 
-1. **[Настройте доменный контроллер Samba на машине BR-SRV]**
+1. **[Настройте доменный контроллер Samba на машине BR-SRV](https://github.com/HatKodGor/exdem2025/blob/main/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1-1)**
     
 2. **[Сконфигурируйте файловое хранилище]**
 
